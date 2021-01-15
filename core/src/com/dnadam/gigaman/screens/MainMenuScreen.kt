@@ -75,6 +75,7 @@ class MainMenuScreen(val game: Game) : ScreenAdapter() {
         startGame.addListener(object : InputListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 game.screen = GamePlayScreen(LevelLoader.loadLevel("level1", game))
+                dispose()
                 return true
             }
         })
@@ -83,6 +84,7 @@ class MainMenuScreen(val game: Game) : ScreenAdapter() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 val currentLevel = Gdx.app.getPreferences(GameConstants.GAME_PREFERENCE).getString(LevelLoadingConstants.LEVELS_PREFERENCE, "level1")
                 game.screen = GamePlayScreen(LevelLoader.loadLevel(currentLevel, game))
+                dispose()
                 return true
             }
         })
@@ -93,6 +95,7 @@ class MainMenuScreen(val game: Game) : ScreenAdapter() {
                 soundEnabled = !soundEnabled
                 Gdx.app.getPreferences(GameConstants.GAME_PREFERENCE).putBoolean(GameConstants.SOUND_ENABLED, soundEnabled).flush()
                 sound.setText("Sound: ${if (soundEnabled) "ON" else "OFF"}")
+
                 return true
             }
         })
@@ -117,6 +120,11 @@ class MainMenuScreen(val game: Game) : ScreenAdapter() {
     }
 
     override fun resize(width: Int, height: Int) {
-        viewport.update(width,height)
+        viewport.update(width, height)
+    }
+
+    override fun dispose() {
+        stage.dispose()
+        super.dispose()
     }
 }

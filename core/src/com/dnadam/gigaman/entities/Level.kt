@@ -25,7 +25,10 @@ open class Level(val game: Game,
     open fun update(delta: Float) {
         gigaMan.update(delta, platforms)
 
-        if (gigaMan.life <= 0) game.screen = GameOverScreen(game)
+        if (gigaMan.life <= 0) {
+            game.screen.dispose()
+            game.screen = GameOverScreen(game)
+        }
 
 
         gigaMan.bullets.begin()

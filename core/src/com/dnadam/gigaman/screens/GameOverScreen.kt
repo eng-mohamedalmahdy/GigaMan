@@ -71,6 +71,7 @@ class GameOverScreen(val game: Game) : ScreenAdapter() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 val currentLevel = Gdx.app.getPreferences(GameConstants.GAME_PREFERENCE).getString(LevelLoadingConstants.LEVELS_PREFERENCE, "level1")
                 game.screen = GamePlayScreen(LevelLoader.loadLevel(currentLevel, game))
+                dispose()
                 return true
             }
         })
@@ -79,6 +80,7 @@ class GameOverScreen(val game: Game) : ScreenAdapter() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
                 val currentLevel = Gdx.app.getPreferences(GameConstants.GAME_PREFERENCE).getString(LevelLoadingConstants.LEVELS_PREFERENCE, "level1")
                 game.screen = MainMenuScreen(game)
+                dispose()
                 return true
             }
         })
