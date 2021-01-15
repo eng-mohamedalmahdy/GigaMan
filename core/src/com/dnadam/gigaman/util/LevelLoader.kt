@@ -45,7 +45,7 @@ class LevelLoader {
         }
 
         fun getNextLevel(currentLevel: Level, game: Game): Level {
-            val path = LevelLoadingConstants.LEVEL_DIR + File.separator + LevelLoadingConstants.LEVELS_LIST + "." + "TXT";
+            val path = LevelLoadingConstants.LEVEL_DIR + File.separator + LevelLoadingConstants.LEVELS_LIST + "." + "txt";
             val handle = Gdx.files.internal(path)
             val text = handle.readString()
             val wordsArray = text.split("\\r?\\n".toRegex()).toTypedArray()

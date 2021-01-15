@@ -209,11 +209,11 @@ class GigaMan(override var position: Vector2) : GameObject() {
 
                     } else {
                         position.x = platform.right
-
+                        acceleration.x = 0f
+                        velocity.x = 0f
+                        break
                     }
-                    acceleration.x = 0f
-                    velocity.x = 0f
-                    break
+
                 }
             }
         }

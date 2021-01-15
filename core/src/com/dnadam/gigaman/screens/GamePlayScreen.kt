@@ -15,7 +15,7 @@ import com.dnadam.gigaman.util.*
 import com.dnadam.gigaman.util.constants.GameConstants
 
 
-class GamePlayScreen(private val level: Level) : ScreenAdapter() {
+class GamePlayScreen(var level: Level) : ScreenAdapter() {
 
     private lateinit var assets: Assets
     private lateinit var spriteBatch: SpriteBatch
